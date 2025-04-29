@@ -64,7 +64,7 @@
 <body>
   <h1>Fitness Questionnaire</h1>
 
-  <form id="questionnaireForm">
+  <form action="https://formspree.io/f/your_form_id" method="POST" id="questionnaireForm">
     <label for="name">1. What is your name?</label>
     <input type="text" id="name" name="name" required />
 
@@ -91,6 +91,9 @@
       <option value="Both">Both</option>
     </select>
 
+    <label for="contact">8. Please below add your phone number or email to begin your next fitness journey.</label>
+    <input type="text" id="contact" name="contact" required />
+
     <button type="submit">Submit</button>
   </form>
 
@@ -103,6 +106,7 @@
     <p><strong>Hours per Week:</strong> <span id="summaryHours"></span></p>
     <p><strong>Goal:</strong> <span id="summaryGoal"></span></p>
     <p><strong>Needs Assistance With:</strong> <span id="summaryAssistance"></span></p>
+    <p><strong>Contact (Phone or Email):</strong> <span id="summaryContact"></span></p>
   </div>
 
   <script>
@@ -119,6 +123,7 @@
       document.getElementById('summaryHours').textContent = form.hours.value;
       document.getElementById('summaryGoal').textContent = form.goal.value;
       document.getElementById('summaryAssistance').textContent = form.assistance.value;
+      document.getElementById('summaryContact').textContent = form.contact.value;
 
       summary.style.display = 'block';
       form.reset();
