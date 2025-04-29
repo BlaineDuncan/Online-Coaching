@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fitness Questionnaire</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .summary {
+      margin-top: 30px;
+      background-color: #e6ffe6;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 600px;
+      margin: 30px auto;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Fitness Questionnaire</h1>
+
+  <form id="questionnaireForm">
+    <label for="name">1. What is your name?</label>
+    <input type="text" id="name" name="name" required />
+
+    <label for="age">2. What is your age?</label>
+    <input type="number" id="age" name="age" required />
+
+    <label for="injuries">3. Do you have any injuries?</label>
+    <input type="text" id="injuries" name="injuries" />
+
+    <label for="routine">4. What is your current workout routine?</label>
+    <textarea id="routine" name="routine" rows="3" required></textarea>
+
+    <label for="hours">5. How many hours per week can you dedicate to training?</label>
+    <input type="number" id="hours" name="hours" required />
+
+    <label for="goal">6. What is your current goal?</label>
+    <input type="text" id="goal" name="goal" required />
+
+    <label for="assistance">7. What do you need assistance with the most?</label>
+    <select id="assistance" name="assistance" required>
+      <option value="">-- Select one --</option>
+      <option value="Structured programming">Structured programming</option>
+      <option value="Personalized nutrition program">Personalized nutrition program</option>
+      <option value="Both">Both</option>
+    </select>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div class="summary" id="summary">
+    <h2>Summary:</h2>
+    <p><strong>Name:</strong> <span id="summaryName"></span></p>
+    <p><strong>Age:</strong> <span id="summaryAge"></span></p>
+    <p><strong>Injuries:</strong> <span id="summaryInjuries"></span></p>
+    <p><strong>Workout Routine:</strong> <span id="summaryRoutine"></span></p>
+    <p><strong>Hours per Week:</strong> <span id="summaryHours"></span></p>
+    <p><strong>Goal:</strong> <span id="summaryGoal"></span></p>
+    <p><strong>Needs Assistance With:</strong> <span id="summaryAssistance"></span></p>
+  </div>
+
+  <script>
+    const form = document.getElementById('questionnaireForm');
+    const summary = document.getElementById('summary');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      document.getElementById('summaryName').textContent = form.name.value;
+      document.getElementById('summaryAge').textContent = form.age.value;
+      document.getElementById('summaryInjuries').textContent = form.injuries.value || 'None';
+      document.getElementById('summaryRoutine').textContent = form.routine.value;
+      document.getElementById('summaryHours').textContent = form.hours.value;
+      document.getElementById('summaryGoal').textContent = form.goal.value;
+      document.getElementById('summaryAssistance').textContent = form.assistance.value;
+
+      summary.style.display = 'block';
+      form.reset();
+    });
+  </script>
+</body>
+</html>
